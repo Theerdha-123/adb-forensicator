@@ -102,5 +102,22 @@ android_forensics/
 This tool is for educational purposes only.
 Only use on devices you own or have permission to analyze.
 
+## 📥 Required Downloads
+
+These files are NOT included in the repo due to size:
+
+### ADB (Android Debug Bridge)
+Download Platform Tools:
+https://developer.android.com/tools/releases/platform-tools
+
+Place adb.exe in: C:\platform-tools\
+
+### Firefox APK (for emulator)
+Download x86_64 version:
+https://www.apkmirror.com/apk/mozilla/firefox/
+
+Install using:
+adb install org.mozilla.firefox_143.0.4.apk
+
 ## 👨‍💻 Author
 M.V.Theerdha
