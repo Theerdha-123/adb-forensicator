@@ -78,7 +78,9 @@ python gui.py
 ### Run Terminal
 python main.py
 
+
 ## 📁 Project Structure
+```
 android_forensics/
 ├── extractor/
 │   ├── __init__.py
@@ -91,12 +93,13 @@ android_forensics/
 ├── reporter/
 │   ├── __init__.py
 │   └── report_generator.py
-├── real_data/          ← extracted from device
-├── test_data/          ← sample test databases
-├── output/             ← generated reports
+├── screenshots/
+├── .gitignore
+├── README.md
 ├── gui.py
 ├── main.py
 └── create_test_data.py
+```
 
 ## ⚠️ Disclaimer
 This tool is for educational purposes only.
