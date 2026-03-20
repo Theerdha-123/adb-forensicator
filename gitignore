@@ -1,0 +1,43 @@
+# ── Python Cache ─────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+
+# ── Real Device Data (Private!) ──────────────────────────────────
+real_data/
+test_data/
+
+# ── Generated Output Files ───────────────────────────────────────
+output/
+
+# ── Virtual Environment ───────────────────────────────────────────
+venv/
+env/
+.env
+
+# ── IDE Files ─────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ── Windows Files ─────────────────────────────────────────────────
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# ── Database Files ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── APK Files (Too Large) ─────────────────────────────────────────
+*.apk
+*.xapk
+
+# ── Log Files ─────────────────────────────────────────────────────
+*.log
+
+# ── Hashes Folder ─────────────────────────────────────────────────
+hashes/

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADB Forensicator Report</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        .header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #58a6ff;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .header p {
+            color: #8b949e;
+            font-size: 13px;
+        }
+        .summary {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .badge {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .badge.calls   { color:#79c0ff; border-color:#79c0ff; }
+        .badge.sms     { color:#a5d6ff; border-color:#a5d6ff; }
+        .badge.browser { color:#56d364; border-color:#56d364; }
+        .badge.flags   { color:#f0883e; border-color:#f0883e; }
+        .badge.total   { color:#58a6ff; border-color:#58a6ff; }
+        .badge.photos  { color:#d2a8ff; border-color:#d2a8ff; }
+        .badge.deleted { color:#f0883e; border-color:#f0883e; }
+        h2 {
+            color: #58a6ff;
+            font-size: 16px;
+            margin: 30px 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #21262d;
+        }
+        .flags-list {
+            list-style: none;
+            background: #161b22;
+            border: 1px solid #f0883e44;
+            border-radius: 6px;
+            padding: 15px 20px;
+        }
+        .flags-list li {
+            color: #f0883e;
+            padding: 5px 0;
+            border-bottom: 1px solid #21262d;
+            font-size: 13px;
+        }
+        .flags-list li:last-child { border-bottom: none; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        thead tr { background: #161b22; }
+        th {
+            color: #58a6ff;
+            padding: 10px 15px;
+            text-align: left;
+            border-bottom: 2px solid #30363d;
+        }
+        td {
+            padding: 8px 15px;
+            border-bottom: 1px solid #21262d;
+            word-break: break-all;
+        }
+        tr:hover td { background: #161b22; }
+        .footer {
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #21262d;
+            color: #6e7681;
+            font-size: 11px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🔍 ADB Forensicator — Forensic Investigation Report</h1>
+        <p>
+            Generated : 2026-03-20 22:27:03
+            &nbsp;|&nbsp;
+            Tool : ADB Forensicator v1.0
+            &nbsp;|&nbsp;
+            Evidence : Android 11 Emulator
+        </p>
+    </div>
+
+    <h2>📊 Summary</h2>
+    <div class="summary">
+        <span class="badge total">   Total: 38</span>
+        <span class="badge calls">  📞 Calls: 14</span>
+        <span class="badge sms">    💬 SMS: 11</span>
+        <span class="badge browser">🌐 Browser: 13</span>
+        <span class="badge photos"> 📷 Photos: 5</span>
+        <span class="badge deleted">🗑️ Deleted Recovered: 20</span>
+        <span class="badge flags">  ⚠️ Flags: 17</span>
+    </div>
+
+    <h2>⚠️ Suspicious Activity</h2>
+    <ul class="flags-list"><li>??  HIGH FREQUENCY CALLS to 1234567890 (4 times)</li><li>??  HIGH FREQUENCY CALLS to 6505551212 (3 times)</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 7674857618</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 7569614779</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 6300891243</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 6300891243</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 1234567890</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 1234567890</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 1234567890</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 1234567890</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 6505551212</li><li>??  SUSPICIOUS KEYWORD 'urgent' found in SMS from 6505551212</li><li>ML CALL ANOMALY: 7674857618 | 2026-03-16 06:25:21 | unusual pattern detected by ML | Score: -0.531</li><li>ML CALL ANOMALY: 1234567890 | 2026-03-16 04:17:51 | odd hour (4:00), high frequency to 1234567890 (4 calls) | Score: -0.567</li><li>ML CALL ANOMALY: 6505551212 | 2026-03-15 09:53:31 | high frequency to 6505551212 (3 calls) | Score: -0.716</li><li>ML SMS ANOMALY: 6301857954 | 2026-03-16 06:27:23 | unusual pattern detected by ML | Score: -0.707</li><li>ML SMS ANOMALY: 7569614779 | 2026-03-16 06:03:49 | contains 1 suspicious keywords | Score: -0.536</li></ul>
+
+    <h2>📋 Activity Timeline</h2>
+    <table>
+        <thead>
+            <tr><th>Time</th><th>Type</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.google.com/search?q=silver%20gold%20prices&oq&ved=0ahUKEwiHgqLruK2TA</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.google.com/search?q=silver%20gold%20prices&oq&ved=0ahUKEwiHgqLruK2TA</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.google.com/search?q=silver%20gold%20prices&oq&ved=0ahUKEwiHgqLruK2TA</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.google.com/search?q=today+gold+price+in+india&sca_esv=2260c787e3aaf8</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | http://google.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://google.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.google.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | http://youtube.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://youtube.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://www.youtube.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://m.youtube.com/#searching</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | http://github.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>1970-01-21 12:46:14</td>
+            <td style='color:#56d364;font-weight:bold'>BROWSER</td>
+            <td>Firefox | https://github.com/</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-15 09:53:31</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Missed | 6505551212 | 0s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-15 09:53:57</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 6505551212 | 4s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-15 09:54:07</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 6505551212 | 1s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-15 09:54:23</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 6505551212 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-15 09:54:24</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 6505551212 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:11:24</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 1234567890 | 4s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:11:44</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 1234567890 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:11:44</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 1234567890 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:14:20</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 1234567890 | 5s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:14:31</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 1234567890 | 6s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:17:51</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 1234567890 | 9s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:18:10</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 1234567890 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 04:18:10</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 1234567890 | This is urgent. Call me back.</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:02:55</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 7569614779 | 4s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:03:13</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 6300891243 | 4s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:03:32</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 6300891243 | Eh project discussion urgent</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:03:33</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 6300891243 | Eh project discussion urgent</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:03:49</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 7569614779 | Eh project
+Urgent</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:25:21</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 7674857618 | 4s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:25:21</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 7674857618 | 0s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:25:41</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 6301857954 | 7s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:27:23</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 6301857954 | Hi
+</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:42:03</td>
+            <td style='color:#a5d6ff;font-weight:bold'>SMS</td>
+            <td>Sent | 7674857618 | THIS IS URGENT COMING UP...</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 06:50:04</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 9121025203 | 5s</td>
+        </tr>
+        <tr>
+            <td style='color:#8b949e'>2026-03-16 07:11:21</td>
+            <td style='color:#79c0ff;font-weight:bold'>CALL</td>
+            <td>Outgoing | 6301527781 | 7s</td>
+        </tr></tbody>
+    </table>
+
+    
+    <h2>📷 Photo EXIF Metadata</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Preview</th><th>Filename</th><th>Size</th>
+                <th>Dimensions</th><th>Date Taken</th>
+                <th>Camera</th><th>Flash</th><th>GPS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src='../real_data/photos/IMG_20260320_194250.jpg' style='width:80px;height:60px;object-fit:cover;border-radius:4px;cursor:pointer;border:1px solid #30363d;' onclick="window.open('../real_data/photos/IMG_20260320_194250.jpg')" title='Click to open full image'></td>
+                <td style='color:#c9d1d9'>IMG_20260320_194250.jpg</td>
+                <td style='color:#8b949e'>122 KB</td>
+                <td style='color:#8b949e'>960x1280</td>
+                <td style='color:#8b949e'>2026:03:20 19:42:51</td>
+                <td style='color:#8b949e'>Android SDK built for x86_64</td>
+                <td style='color:#8b949e'>No</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td><img src='../real_data/photos/IMG_20260316_121015.jpg' style='width:80px;height:60px;object-fit:cover;border-radius:4px;cursor:pointer;border:1px solid #30363d;' onclick="window.open('../real_data/photos/IMG_20260316_121015.jpg')" title='Click to open full image'></td>
+                <td style='color:#c9d1d9'>IMG_20260316_121015.jpg</td>
+                <td style='color:#8b949e'>141 KB</td>
+                <td style='color:#8b949e'>960x1280</td>
+                <td style='color:#8b949e'>2026:03:16 12:10:17</td>
+                <td style='color:#8b949e'>Android SDK built for x86_64</td>
+                <td style='color:#8b949e'>No</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td><img src='../real_data/photos/IMG_20260320_194245.jpg' style='width:80px;height:60px;object-fit:cover;border-radius:4px;cursor:pointer;border:1px solid #30363d;' onclick="window.open('../real_data/photos/IMG_20260320_194245.jpg')" title='Click to open full image'></td>
+                <td style='color:#c9d1d9'>IMG_20260320_194245.jpg</td>
+                <td style='color:#8b949e'>126 KB</td>
+                <td style='color:#8b949e'>960x1280</td>
+                <td style='color:#8b949e'>2026:03:20 19:42:46</td>
+                <td style='color:#8b949e'>Android SDK built for x86_64</td>
+                <td style='color:#8b949e'>No</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td><img src='../real_data/photos/IMG_20260320_194250.jpg' style='width:80px;height:60px;object-fit:cover;border-radius:4px;cursor:pointer;border:1px solid #30363d;' onclick="window.open('../real_data/photos/IMG_20260320_194250.jpg')" title='Click to open full image'></td>
+                <td style='color:#c9d1d9'>IMG_20260320_194250.jpg</td>
+                <td style='color:#8b949e'>122 KB</td>
+                <td style='color:#8b949e'>960x1280</td>
+                <td style='color:#8b949e'>2026:03:20 19:42:51</td>
+                <td style='color:#8b949e'>Android SDK built for x86_64</td>
+                <td style='color:#8b949e'>No</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td><img src='../real_data/photos/IMG_20260320_194305.jpg' style='width:80px;height:60px;object-fit:cover;border-radius:4px;cursor:pointer;border:1px solid #30363d;' onclick="window.open('../real_data/photos/IMG_20260320_194305.jpg')" title='Click to open full image'></td>
+                <td style='color:#c9d1d9'>IMG_20260320_194305.jpg</td>
+                <td style='color:#8b949e'>133 KB</td>
+                <td style='color:#8b949e'>960x1280</td>
+                <td style='color:#8b949e'>2026:03:20 19:43:05</td>
+                <td style='color:#8b949e'>Android SDK built for x86_64</td>
+                <td style='color:#8b949e'>No</td>
+                <td>N/A</td>
+            </tr></tbody>
+    </table>
+
+    
+    <h2>🗑️ Recovered Deleted SMS (20)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>Date</th>
+                <th>Message</th>
+                <th>Recovery Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    SQLite format 3</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    en_US</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    3canonical_addresses</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    threads</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    PE<P</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	7	7674857618aZSTHIS IS URGENT COMING UP...com.android.messaging@
+</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	7	6301857954SHi
+com.android.messagingN	</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	7	7569614779>WSEh project
+Urgentcom.android.messagingV</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	6300891243>Eh project discussion urgentcom.android.dialerV</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	6300891243>Eh project discussion urgentcom.android.dialerW</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	1234567890ݝThis is urgent. Call me back.com.android.dialerW</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	1234567890ݝUThis is urgent. Call me back.com.android.dialerW</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	1234567890׻This is urgent. Call me back.com.android.dialerW</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	1234567890׹This is urgent. Call me back.com.android.dialerV</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	6505551212This is urgent. Call me back.com.android.dialerV</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	1	6505551212/This is urgent. Call me back.com.android.dialer</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    hB*</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	C	aZ`6THIS IS URGENT COMING UP...</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    		S5Hi
+$</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr>
+            <tr>
+                <td style='color:#f0883e'>
+                    Unknown</td>
+                <td style='color:#8b949e'>
+                    Unknown</td>
+                <td style='color:#c9d1d9'>
+                    	/	>Yp4Eh project
+Urgent0</td>
+                <td style='color:#56d364'>
+                    Raw Binary Scan</td>
+            </tr></tbody>
+    </table>
+
+    <div class="footer">
+        <p>
+            --- End of Report | ADB Forensicator v1.0 |
+            For Educational Purposes Only ---
+        </p>
+    </div>
+
+</body>
+</html>
