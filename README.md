@@ -10,23 +10,23 @@ devices using ADB (Android Debug Bridge).
 
 ## 📸 Screenshots
 
-### GUI - Terminal Log
-![GUI](screenshots/01_gui_terminal.png)
+### 🖥️ GUI - Terminal Log
+![GUI Terminal](screenshots/01_gui_terminal.png)
 
-### GUI - Scan Complete
-![Scan](screenshots/02_gui_scan_complete.png)
+### ✅ GUI - Scan Complete  
+![Scan Complete](screenshots/02_gui_scan_complete.png)
 
-### HTML Report - Summary
-![HTML](screenshots/03_html_report_summary.png)
+### 🌐 HTML Report - Summary
+![HTML Summary](screenshots/03_html_report_summary.png)
 
-### HTML Report - Timeline
-![Timeline](screenshots/04_html_timeline.png)
+### 📋 HTML Report - Timeline
+![HTML Timeline](screenshots/04_html_timeline.png)
 
-### HTML Report - Photo EXIF
-![Photos](screenshots/05_html_photos.png)
+### 📷 HTML Report - Photo EXIF
+![Photo EXIF](screenshots/05_html_photos.png)
 
-### PDF Report
-![PDF](screenshots/06_pdf_report.png)
+### 📄 PDF Report
+![PDF Report](screenshots/06_pdf_report.png)
 
 ## ✅ Features
 - 📞 Call Log Extraction
